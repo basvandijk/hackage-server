@@ -95,7 +95,7 @@ initTagsFeature ServerEnv{serverStateDir} core@CoreFeature{..} upload = do
           let pkgname = packageName pkgid
               tags = Set.fromList . constructImmutableTags . pkgDesc $ pkginfo
           updateState tagsState . SetPackageTags pkgname $ tags
-          runHook_ tagsUpdated (pkgs, tags)
+          -- runHook_ tagsUpdated (pkgs, tags)
 
     return feature
 
@@ -251,4 +251,3 @@ constructImmutableTags genDesc =
         PublicDomain -> [Tag "public-domain"]
         AllRightsReserved -> [Tag "all-rights-reserved"]
         _ -> []
-
